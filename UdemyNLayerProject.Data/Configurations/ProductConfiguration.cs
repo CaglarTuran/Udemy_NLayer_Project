@@ -20,6 +20,8 @@ namespace UdemyNLayerProject.Data.Configurations
             builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(18,2)");
 
             builder.Property(x => x.InnerBarcode).HasMaxLength(50);
+
+            builder.ToTable("Products");
         }
     }
 }
