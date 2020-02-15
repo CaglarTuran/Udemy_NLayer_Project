@@ -31,7 +31,10 @@ namespace UdemyNLayerProject.API
         {
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString());
+                options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o =>
+                {
+                    o.MigrationsAssembly("UdemyNLayerProject.Data");
+                });
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
