@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UdemyNLayerProject.Core.Services
 {
-    internal interface IService<TEntity> where TEntity : class
+    public interface IService<TEntity> where TEntity : class
     {
         Task<TEntity> GetByIdAsync(int id);
 

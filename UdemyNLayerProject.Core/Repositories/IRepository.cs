@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UdemyNLayerProject.Core.Repositories
 {
-    internal interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class
     {
         Task<TEntity> GetByIdAsync(int id);
 
