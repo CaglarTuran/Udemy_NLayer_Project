@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UdemyNLayerProject.API.DTOs;
 using UdemyNLayerProject.Core.Services;
 
 namespace UdemyNLayerProject.API.Controllers
@@ -13,10 +15,12 @@ namespace UdemyNLayerProject.API.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
+        private readonly IMapper _mapper;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, IMapper mapper)
         {
             _categoryService = categoryService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -25,7 +29,7 @@ namespace UdemyNLayerProject.API.Controllers
         {
             var categories = await _categoryService.GetAllAsync();
 
-            return Ok(categories);
+            return Ok(_mapper.Map<IEnumerable<CategoryDto>>(categories));
         }
     }
 }
