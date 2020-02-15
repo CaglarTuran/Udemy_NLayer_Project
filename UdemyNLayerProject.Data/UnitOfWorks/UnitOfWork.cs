@@ -8,7 +8,7 @@ using UdemyNLayerProject.Data.Repositories;
 
 namespace UdemyNLayerProject.Data.UnitOfWorks
 {
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
 
