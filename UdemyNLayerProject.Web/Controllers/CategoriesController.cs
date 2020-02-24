@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using UdemyNLayerProject.Core.Models;
 using UdemyNLayerProject.Core.Services;
 using UdemyNLayerProject.Web.DTOs;
+using UdemyNLayerProject.Web.Filters;
 
 namespace UdemyNLayerProject.Web.Controllers
 {
@@ -57,6 +58,7 @@ namespace UdemyNLayerProject.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         public IActionResult Delete(int id)
         {
             var category = _categoryService.GetByIdAsync(id).Result;
